@@ -1,3 +1,5 @@
+const { redirect } = require("express/lib/response");
+
 async function loginFormHandler(event) {
     event.preventDefault();
 
@@ -15,7 +17,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.redirect('/dashboard');
         } else {
             alert(response.statusText);
         }
@@ -42,6 +44,7 @@ async function signupFormHandler(event) {
         // check the response status
         if (response.ok) {
             console.log('success');
+            document.location.redirect('/dashboard');
         } else {
             alert(response.statusText);
         }
